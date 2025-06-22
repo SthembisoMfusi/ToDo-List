@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.ST.Mfusi</groupId>
+    <artifactId>ToDo-List</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <!-- =================================================================== -->
+    <!--                            PROPERTIES                               -->
+    <!-- =================================================================== -->
+    <!-- Manages dependency versions in one place -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source> <!-- Note: Changed to 21, the latest LTS. Feel free to change back to 24. -->
+        <maven.compiler.target>21</maven.compiler.target>
+
+        <!-- Dependency Versions -->
+        <junit.version>5.10.2</junit.version>
+        <assertj.version>3.25.3</assertj.version>
+        <mockito.version>5.12.0</mockito.version>
+        <javafx.version>21.0.2</javafx.version>
+        <jackson.version>2.17.1</jackson.version>
+        <lombok.version>1.18.32</lombok.version>
+        <commons.lang.version>3.14.0</commons.lang.version>
+        <slf4j.version>2.0.13</slf4j.version>
+
+        <!-- Plugin Versions -->
+        <maven.compiler.plugin.version>3.13.0</maven.compiler.plugin.version>
+        <maven.shade.plugin.version>3.5.2</maven.shade.plugin.version>
+        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
+    </properties>
+
+    <!-- =================================================================== -->
+    <!--                            DEPENDENCIES                             -->
+    <!-- =================================================================== -->
+    <dependencies>
+
+        <!-- GUI Framework: JavaFX -->
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+
+        <!-- Data Persistence: JSON Serialization (Jackson) -->
+        <!-- For saving your tasks to a file -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- Utility: Lombok -->
+        <!-- Reduces boilerplate code (getters, setters, constructors, etc.) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Utility: Apache Commons Lang -->
+        <!-- Provides helpful utility classes for strings, numbers, etc. -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons.lang.version}</version>
+        </dependency>
+
+        <!-- Logging: SLF4J (API) & Logback (Implementation) -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.6</version> <!-- Managed by slf4j-bom, but explicit is fine -->
+        </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- =================================================================== -->
+    <!--                            BUILD PLUGINS                            -->
+    <!-- =================================================================== -->
+    <build>
+        <plugins>
+
+            <!-- JavaFX Maven Plugin -->
+            <!-- Handles running and packaging the JavaFX application -->
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx.maven.plugin.version}</version>
+                <configuration>
+                    <mainClass>org.ST.Mfusi.Main</mainClass> <!-- IMPORTANT: Change this to your main class path -->
+                </configuration>
+            </plugin>
+
+            <!-- Maven Shade Plugin -->
+            <!-- Packages the application and all dependencies into one executable "fat JAR" -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven.shade.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>org.ST.Mfusi.Launcher</mainClass> <!-- IMPORTANT: This points to a launcher class -->
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
