@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="org.ST.mfusi.app.gui.WelcomeViewController"
+      alignment="CENTER" spacing="20" style="-fx-padding: 50;">
+
+    <Label text="Welcome to Your To-Do List!" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label text="Please enter your name to begin."/>
+
+    <TextField fx:id="nameField" promptText="Your Name" maxWidth="300"/>
+
+    <Button text="Start Managing Tasks" onAction="#handleStartButton" style="-fx-font-size: 14px;"/>
+</VBox>

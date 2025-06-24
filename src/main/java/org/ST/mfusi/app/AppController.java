@@ -130,4 +130,26 @@ public class AppController {
         }
         return "Invalid task number.";
     }
+    /**
+     * Clears all tasks from the user's to-do list.
+     * @return A status message indicating success or failure.
+     */
+    public String clearAllTasks() {
+        userProfile.clearTasks();
+        return "All tasks cleared successfully.";
+    }
+    /**
+     * Retrieves the number of tasks in the user's to-do list.
+     * @return The count of tasks.
+     */
+    public int getTaskCount() {
+        return userProfile.getTasks().size();
+    }
+    /**
+     * Retrieves the user profile name.
+     * @return The name of the user profile.
+     */
+    public String getProfileName() {
+        return userProfile.getName();
+    }
 }

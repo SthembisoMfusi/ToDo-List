@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.ST.mfusi.app.gui.ToDoViewController">
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <top>
+        <VBox spacing="10">
+            <Label fx:id="welcomeLabel" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Separator/>
+        </VBox>
+    </top>
+
+    <center>
+        <ListView fx:id="taskListView" style="-fx-margin-top: 10;"/>
+    </center>
+
+    <bottom>
+        <VBox spacing="15" style="-fx-padding: 10 0 0 0;">
+            <!-- Task Actions on selected item -->
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Selected Task Actions:"/>
+                <Button text="Mark as Complete" onAction="#handleMarkCompleteButton"/>
+                <Button text="Change Priority" onAction="#handleChangePriorityButton"/>
+                <Button text="Edit Task" onAction="#handleEditTaskButton"/>
+                <Button text="Remove Task" onAction="#handleRemoveTaskButton" style="-fx-text-fill: red;"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Add New Task Form -->
+            <GridPane hgap="10" vgap="10">
+                <Label text="Add New Task" style="-fx-font-size: 16px;" GridPane.columnIndex="0" GridPane.columnSpan="3"/>
+                <TextField fx:id="titleField" promptText="Enter Title" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="descriptionField" promptText="Enter Description" GridPane.rowIndex="1" GridPane.columnIndex="1" HBox.hgrow="ALWAYS"/>
+                <ComboBox fx:id="priorityComboBox" promptText="Select Priority" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                <Button text="Add Task" onAction="#handleAddTaskButton" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            </GridPane>
+        </VBox>
+    </bottom>
+</BorderPane>

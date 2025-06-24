@@ -112,6 +112,12 @@ public class Profile {
     public List<Task> getTasks() {
         return this.toDoList.getTaskList();
     }
+    /**
+     * Clears all tasks from the to-do list.
+     */
+    public void clearTasks() {
+        this.toDoList.clearTasks();
+    }
 
     /**
      * Generates a clean, formatted string of the to-do list for terminal display.
