@@ -19,12 +19,12 @@ public class Profile {
     /**
      * The name of the user associated with this profile.
      */
-    @Getter
+
     private String name;
     /**
      * The email address of the user associated with this profile.
      */
-    @Getter
+
     private String email;
     /**
      * The to-do list containing all tasks for this profile.
@@ -59,7 +59,21 @@ public class Profile {
     public void setName(String name) {
         this.name = name;
     }
+    /**
+     * Retrieves the name of this profile.
+     * @return The name of the profile.
+     */
+    public String getName() {
+        return name;
+    }
 
+    /**
+     * Retrieves the email address of this profile.
+     * @return The email address of the profile.
+     */
+    public String getEmail() {
+        return email;
+    }
     /**
      * Updates the email address of this profile.
      * @param email The new email address to set.

@@ -1,20 +1,21 @@
+
 # 📝 ToDo-List
 
 ## 🌎 Brief Overview
 
-ToDo-List is a simple but powerful command-line application for managing your daily tasks. You can create a personal profile, add tasks with different priorities (High, Medium, Low), edit them, mark them as complete, and view your entire list in a clean, organized format.
+ToDo-List is a simple but powerful application for managing your daily tasks. It features both a **command-line interface (CLI)** for quick terminal-based use and a **graphical user interface (GUI)** for a more visual experience.
 
-The project is built with a clean architecture that separates the application's logic from the user interface, making it easy to understand and maintain.
+You can create a personal profile, add tasks with different priorities (High, Medium, Low), edit them, mark them as complete, and view your entire list in a clean, organized format. The project is built with a clean architecture that separates the application's logic from the user interface, making it easy to understand and maintain.
 
 ---
 
 ## 🚀 Getting Started
 
-This project is a `Java` project using `maven` as the build tool.
+This project is a `Java` project using `maven` as the build tool. A `Makefile` is included to provide simple shortcuts for common commands.
 
 ### 📦 3rd Party Dependencies
 
-For the current command-line version, Maven handles all necessary dependencies. No external setup is required.
+Maven handles all necessary dependencies automatically. No external setup is required.
 
 ### 🛠 Installing `maven`
 
@@ -57,7 +58,7 @@ Install `maven` using your favorite package manager:
     mvn -v
     ```
 
-### 🏗 Building and Running the Application
+### 🏗 Building the Project
 
 1.  Clone the repository:
     ```bash
@@ -67,24 +68,35 @@ Install `maven` using your favorite package manager:
     ```bash
     cd ToDo-List
     ```
-3.  Build the project and create the executable JAR:
+3.  Build the project using the Makefile shortcut:
     ```bash
-    mvn clean package
+    make build
     ```
-4.  Run the application:
-    ```bash
-    java -jar target/ToDo-List-1.0-SNAPSHOT.jar
-    ```
-    You will be prompted to enter your name and can then interact with the main menu.
+    This command will compile your code and package the application.
 
-### ✅ Running Unit Tests
+### ▶️ Running the Application
 
-1.  Clone the repository.
-2.  Navigate to the root folder:
-    ```bash
-    cd ToDo-List
-    ```
-3.  Run the tests:
-    ```bash
-    mvn test
-    ```
+You can run either the command-line or the graphical version of the application.
+
+#### To Run the **Console Version**:
+
+```bash
+make run-console
+
+```
+#### To Run the **GUI Version**:
+```bash
+make run-gui
+```
+    
+
+
+
+#### ✅ Running Unit Tests
+Clone the repository and navigate to the root folder.
+
+Run all unit tests with this simple command:
+```bash
+make test
+```
+        
