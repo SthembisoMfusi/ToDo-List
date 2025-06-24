@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cf7bd4f-3318-4dc8-85cc-fadaab7376f8" name="Changes" comment="adding stuff">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/app/ToDoList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/task/Priority.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/task/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/task/TaskTest.java" afterDir="false" />
+    <list default="true" id="7cf7bd4f-3318-4dc8-85cc-fadaab7376f8" name="Changes" comment="Update README.md with project overview, installation instructions, and usage guidelines">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,34 +47,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "JUnit.TaskTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/sthembiso/Documents/Java Projects",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JUnit.TaskTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sthembiso/Documents/Java Projects&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.ST.mfusi.app" />
+      <recent name="org.ST.mfusi.todolist" />
+      <recent name="org.ST.mfusi.profile" />
       <recent name="org.ST.mfusi.task" />
     </key>
   </component>
@@ -124,7 +123,9 @@
       <workItem from="1750660022800" duration="414000" />
       <workItem from="1750670350591" duration="2536000" />
       <workItem from="1750702793261" duration="310000" />
-      <workItem from="1750769189786" duration="1472000" />
+      <workItem from="1750769189786" duration="6183000" />
+      <workItem from="1750778301728" duration="485000" />
+      <workItem from="1750785970180" duration="20000" />
     </task>
     <task id="LOCAL-00001" summary="adding stuff">
       <option name="closed" value="true" />
@@ -134,7 +135,55 @@
       <option name="project" value="LOCAL" />
       <updated>1750606555105</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Add Task and ToDoList classes with priority management">
+      <option name="closed" value="true" />
+      <created>1750771113352</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1750771113352</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implement main application logic for To-Do List management">
+      <option name="closed" value="true" />
+      <created>1750772985191</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1750772985191</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Separated the main application to have an AppController to allow for easier testing, added tests for both todolist and AppController">
+      <option name="closed" value="true" />
+      <created>1750773652966</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1750773652966</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add Profile class tests for task management and profile properties">
+      <option name="closed" value="true" />
+      <created>1750773917953</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1750773917953</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Enhance AppController and Profile classes with detailed Javadoc comments for better documentation and maintainability">
+      <option name="closed" value="true" />
+      <created>1750774753502</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1750774753502</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Update README.md with project overview, installation instructions, and usage guidelines">
+      <option name="closed" value="true" />
+      <created>1750778770217</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1750778770217</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +202,12 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding stuff" />
+    <MESSAGE value="Add Task and ToDoList classes with priority management" />
+    <MESSAGE value="Implement main application logic for To-Do List management" />
+    <MESSAGE value="Separated the main application to have an AppController to allow for easier testing, added tests for both todolist and AppController" />
+    <MESSAGE value="Add Profile class tests for task management and profile properties" />
+    <MESSAGE value="Enhance AppController and Profile classes with detailed Javadoc comments for better documentation and maintainability" />
+    <MESSAGE value="Update README.md with project overview, installation instructions, and usage guidelines" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update README.md with project overview, installation instructions, and usage guidelines" />
   </component>
 </project>
