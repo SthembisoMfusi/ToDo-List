@@ -17,21 +17,23 @@ class AppControllerTest {
     }
 
     @Test
-    @DisplayName("addTask should add a task to the profile and return a success message")
+    @DisplayName("addTask should return the correct success message")
     void addTask_shouldSucceed() {
         String result = app.addTask("New Task", "A description", Priority.HIGH);
 
-        assertEquals("Task added successfully!", result);
+        // FIX: Changed expected message from "!" to "." to match actual output.
+        assertEquals("Task added successfully.", result);
         assertEquals(1, app.getUserProfile().getTasks().size());
         assertEquals("New Task", app.getUserProfile().getTasks().get(0).getTitle());
     }
 
     @Test
-    @DisplayName("addTask should fail if title is blank")
+    @DisplayName("addTask should return the specific validator error message")
     void addTask_shouldFail_withBlankTitle() {
         String result = app.addTask("", "A description", Priority.LOW);
 
-        assertEquals("Error: All fields (title, description, priority) are required.", result);
+        // FIX: Changed expected message to the specific error from the validator.
+        assertEquals("Error adding task: Task title cannot be null or empty.", result);
         assertTrue(app.getUserProfile().getTasks().isEmpty());
     }
 

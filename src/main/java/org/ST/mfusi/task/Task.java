@@ -28,18 +28,6 @@ public class Task {
 
 
     /**
-     * Constructs a new Task with only a description.
-     * The title will be null, and the priority will default to MEDIUM.
-     * @param description The description of the task.
-     */
-    public Task(String description) {
-        this.description = description;
-        this.completed = false;
-        this.priority = Priority.MEDIUM;
-        this.title = null; // Title is optional, can be null
-    }
-
-    /**
      * Constructs a new Task with a title and a description.
      * The priority will default to MEDIUM.
      * @param title The title of the task.

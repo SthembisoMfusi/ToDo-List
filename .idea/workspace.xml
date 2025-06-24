@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7cf7bd4f-3318-4dc8-85cc-fadaab7376f8" name="Changes" comment="Update README.md with project overview, installation instructions, and usage guidelines">
+    <list default="true" id="7cf7bd4f-3318-4dc8-85cc-fadaab7376f8" name="Changes" comment="Enhance acceptance tests for To-Do List application with detailed scenarios and assertions; add Makefile for simplified build and run commands">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/validator/TaskValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/app/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/app/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/app/gui/ToDoViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/app/gui/ToDoViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/task/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/task/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/todolist/ToDoList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ST/mfusi/todolist/ToDoList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/app/AppControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/app/AppControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/task/TaskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/task/TaskTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/todolist/ToDoListTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/ST/mfusi/todolist/ToDoListTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +24,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -47,32 +56,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;JUnit.TaskTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/sthembiso/Documents/Java Projects&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JUnit.AcceptanceTest.executor": "Run",
+    "JUnit.AppControllerTest.executor": "Run",
+    "JUnit.ProfileTest.executor": "Run",
+    "JUnit.TaskTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/sthembiso/Documents/Java Projects",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.ST.mfusi.app" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="org.ST.mfusi.app" />
@@ -81,7 +96,54 @@
       <recent name="org.ST.mfusi.task" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AppControllerTest">
+    <configuration name="AcceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ToDo-List" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ST.mfusi.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.ST.mfusi.app" />
+      <option name="MAIN_CLASS_NAME" value="org.ST.mfusi.app.AcceptanceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AppControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ToDo-List" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ST.mfusi.app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.ST.mfusi.app" />
+      <option name="MAIN_CLASS_NAME" value="org.ST.mfusi.app.AppControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ProfileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ToDo-List" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.ST.mfusi.profile.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.ST.mfusi.profile" />
+      <option name="MAIN_CLASS_NAME" value="org.ST.mfusi.profile.ProfileTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TaskTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ToDo-List" />
       <extension name="coverage">
@@ -97,8 +159,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.AcceptanceTest" />
+      <item itemvalue="JUnit.AppControllerTest" />
+      <item itemvalue="JUnit.ProfileTest" />
+      <item itemvalue="JUnit.TaskTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AppControllerTest" />
+        <item itemvalue="JUnit.AcceptanceTest" />
+        <item itemvalue="JUnit.ProfileTest" />
         <item itemvalue="JUnit.TaskTest" />
       </list>
     </recent_temporary>
@@ -126,6 +197,7 @@
       <workItem from="1750769189786" duration="6183000" />
       <workItem from="1750778301728" duration="485000" />
       <workItem from="1750785970180" duration="20000" />
+      <workItem from="1750788606034" duration="9907000" />
     </task>
     <task id="LOCAL-00001" summary="adding stuff">
       <option name="closed" value="true" />
@@ -183,7 +255,31 @@
       <option name="project" value="LOCAL" />
       <updated>1750778770217</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add acceptance tests for full user flow in To-Do List application">
+      <option name="closed" value="true" />
+      <created>1750788763353</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750788763353</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add GUI components and functionality for To-Do List application, including task management and user profile features">
+      <option name="closed" value="true" />
+      <created>1750791324011</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750791324011</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Enhance acceptance tests for To-Do List application with detailed scenarios and assertions; add Makefile for simplified build and run commands">
+      <option name="closed" value="true" />
+      <created>1750798055915</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750798055915</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +304,9 @@
     <MESSAGE value="Add Profile class tests for task management and profile properties" />
     <MESSAGE value="Enhance AppController and Profile classes with detailed Javadoc comments for better documentation and maintainability" />
     <MESSAGE value="Update README.md with project overview, installation instructions, and usage guidelines" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update README.md with project overview, installation instructions, and usage guidelines" />
+    <MESSAGE value="Add acceptance tests for full user flow in To-Do List application" />
+    <MESSAGE value="Add GUI components and functionality for To-Do List application, including task management and user profile features" />
+    <MESSAGE value="Enhance acceptance tests for To-Do List application with detailed scenarios and assertions; add Makefile for simplified build and run commands" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance acceptance tests for To-Do List application with detailed scenarios and assertions; add Makefile for simplified build and run commands" />
   </component>
 </project>

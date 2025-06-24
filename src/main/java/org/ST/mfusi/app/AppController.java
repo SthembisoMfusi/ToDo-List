@@ -64,11 +64,12 @@ public class AppController {
      * @return A status message indicating success or failure.
      */
     public String addTask(String title, String description, Priority priority) {
-        if (title == null || title.isBlank() || description == null || description.isBlank() || priority == null) {
-            return "Error: All fields (title, description, priority) are required.";
+        try {
+            userProfile.addTask(title, description, priority);
+            return "Task added successfully.";
+        } catch (IllegalArgumentException e) {
+            return "Error adding task: " + e.getMessage();
         }
-        userProfile.addTask(title, description, priority);
-        return "Task added successfully!";
     }
 
     /**

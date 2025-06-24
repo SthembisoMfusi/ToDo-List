@@ -29,10 +29,10 @@ public class ToDoViewController {
 
     @FXML
     public void initialize() {
-        // Populate the priority dropdown with all possible values
+
         priorityComboBox.setItems(FXCollections.observableArrayList(Priority.values()));
 
-        // Set the ListView to display tasks in a user-friendly way
+
         taskListView.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Task task, boolean empty) {
@@ -40,7 +40,7 @@ public class ToDoViewController {
                 if (empty || task == null) {
                     setText(null);
                 } else {
-                    String status = task.isCompleted() ? "[✔]" : "[ ]"; // More graphical checkmark
+                    String status = task.isCompleted() ? "[✔]" : "[ ]";
                     setText(String.format("%s %s: %s (Priority: %s)",
                             status, task.getTitle(), task.getDescription(), task.getPriority()));
                 }
@@ -54,16 +54,29 @@ public class ToDoViewController {
         String description = descriptionField.getText();
         Priority priority = priorityComboBox.getValue();
 
-        if (title.isBlank() || description.isBlank() || priority == null) {
-            showAlert("Invalid Input", "Title, description, and priority are all required.");
-            return;
-        }
 
-        appController.addTask(title, description, priority);
-        titleField.clear();
-        descriptionField.clear();
-        priorityComboBox.setValue(null); // Reset dropdown
-        updateTaskList();
+        String result = appController.addTask(title, description, priority);
+
+
+        if (result.startsWith("Error:")) {
+
+            showErrorAlert("Could Not Add Task", result);
+        } else {
+
+            titleField.clear();
+            descriptionField.clear();
+            priorityComboBox.setValue(null);
+            updateTaskList();
+        }
+    }
+
+
+    private void showErrorAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     @FXML
@@ -141,7 +154,7 @@ public class ToDoViewController {
     private Task getSelectedTask() {
         Task selected = taskListView.getSelectionModel().getSelectedItem();
         if (selected == null) {
-            showAlert("No Task Selected", "Please select a task from the list first.");
+            showInfoAlert("No Task Selected", "Please select a task from the list first.");
         }
         return selected;
     }
@@ -157,7 +170,7 @@ public class ToDoViewController {
         }
     }
 
-    private void showAlert(String title, String message) {
+    private void showInfoAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
