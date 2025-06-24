@@ -10,9 +10,17 @@ import java.util.Scanner;
  * The main entry point for the To-Do List application.
  * This class handles all user interface interactions (console input/output)
  * and delegates application logic to an AppController instance.
+ * @author Sthembiso Mfusi
+ * @version 1.0
+ * @since 2025-06-24
  */
 public class Main {
 
+    /**
+     * The main entry point of the application. Initializes the application,
+     * creates the user profile, and runs the main menu loop.
+     * @param args Command-line arguments (not used).
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -55,6 +63,9 @@ public class Main {
         scanner.close();
     }
 
+    /**
+     * Displays the main menu of options to the user's console.
+     */
     private static void displayMenu() {
         System.out.println("--- Main Menu ---");
         System.out.println("1. View To-Do List");
@@ -98,7 +109,7 @@ public class Main {
         String result = app.addTask(title, description, priority);
         System.out.println(result);
     }
-/**
+    /**
      * Handles the logic for removing a task from the user's to-do list.
      * Displays the current list of tasks and prompts the user for the task number to remove.
      * Validates the input and delegates the removal to the {@code AppController}.
@@ -120,7 +131,7 @@ public class Main {
             System.out.println("Invalid input. Please enter a number.");
         }
     }
-/**
+    /**
      * Handles the logic for marking a task as complete in the user's to-do list.
      * Displays the current list of tasks and prompts the user for the task number to mark as complete.
      * Validates the input and delegates the completion marking to the {@code AppController}.
@@ -142,7 +153,7 @@ public class Main {
             System.out.println("Invalid input. Please enter a number.");
         }
     }
-/**
+    /**
      * Handles the logic for changing the priority of a {@code task} in the user's to-do list.
      * Displays the current list of tasks and prompts the user for the task number and new priority.
      * Validates the input and delegates the priority change to the {@code AppController}.
@@ -183,6 +194,14 @@ public class Main {
         }
     }
 
+    /**
+     * Handles the user interaction for editing an existing task.
+     * Prompts the user to select a task and enter a new title and description.
+     * Delegates the actual modification to the AppController.
+     *
+     * @param scanner The Scanner instance to read user input.
+     * @param app     The AppController instance managing application logic.
+     */
     private static void handleEditTask(Scanner scanner, AppController app) {
         if (isListEmpty(app)) return;
         System.out.println(app.getFormattedToDoList());
@@ -216,6 +235,13 @@ public class Main {
         }
     }
 
+    /**
+     * Checks if the user's to-do list is empty and prints a message if it is.
+     * This is a helper method to avoid repetitive code in the handler methods.
+     *
+     * @param app The AppController instance.
+     * @return {@code true} if the list is empty, {@code false} otherwise.
+     */
     private static boolean isListEmpty(AppController app) {
         if (app.getUserProfile().getTasks().isEmpty()) {
             System.out.println("\nYour to-do list is empty. Please add a task first.");

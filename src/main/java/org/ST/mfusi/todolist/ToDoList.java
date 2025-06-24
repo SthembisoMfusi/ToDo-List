@@ -10,12 +10,21 @@ import java.util.StringJoiner;
 
 /**
  * defines a to-do list class which
- * sorts all of the tasks that a user has to do.
+ * sorts all the tasks that a user has to do.
  * they range in their priorities, completed status, and description
+ * @author Sthembiso Mfusi
+ * @version 1.0
+ * @since 2025-06-24
  */
 public class ToDoList {
+    /**
+     * A list holding all the {@link Task} objects in this to-do list.
+     */
     private List<Task> taskList;
 
+    /**
+     * Constructs a new, empty ToDoList.
+     */
     public ToDoList(){
         this.taskList = new ArrayList<Task>();
 

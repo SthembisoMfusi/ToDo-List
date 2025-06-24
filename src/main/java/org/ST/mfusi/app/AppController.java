@@ -27,20 +27,42 @@ import org.ST.mfusi.task.Task;
  * @since 2025-06-24
  */
 public class AppController {
+    /**
+     * The user profile associated with this controller instance.
+     */
     private final Profile userProfile;
 
+    /**
+     * Constructs a new AppController and creates a user profile with the given name.
+     * @param profileName The name of the user for whom the profile will be created.
+     */
     public AppController(String profileName) {
         this.userProfile = new Profile(profileName);
     }
 
+    /**
+     * Retrieves the user profile managed by this controller.
+     * @return The {@link Profile} instance.
+     */
     public Profile getUserProfile() {
         return userProfile;
     }
 
+    /**
+     * Generates a user-friendly, formatted string representing the current to-do list.
+     * @return A string containing the formatted list of tasks.
+     */
     public String getFormattedToDoList() {
         return userProfile.getFormattedToDoList();
     }
 
+    /**
+     * Adds a new task to the user's to-do list.
+     * @param title The title of the task.
+     * @param description The detailed description of the task.
+     * @param priority The priority level of the task.
+     * @return A status message indicating success or failure.
+     */
     public String addTask(String title, String description, Priority priority) {
         if (title == null || title.isBlank() || description == null || description.isBlank() || priority == null) {
             return "Error: All fields (title, description, priority) are required.";
@@ -49,6 +71,11 @@ public class AppController {
         return "Task added successfully!";
     }
 
+    /**
+     * Removes a task from the to-do list based on its 1-based index.
+     * @param taskNumber The number of the task to remove as displayed in the list.
+     * @return A status message indicating success or failure.
+     */
     public String removeTask(int taskNumber) {
         if (userProfile.removeTask(taskNumber)) {
             return "Task removed successfully.";
@@ -56,6 +83,11 @@ public class AppController {
         return "Invalid task number.";
     }
 
+    /**
+     * Marks a task as complete based on its 1-based index.
+     * @param taskNumber The number of the task to mark as complete.
+     * @return A status message indicating success or failure.
+     */
     public String markTaskComplete(int taskNumber) {
         if (userProfile.markTaskComplete(taskNumber)) {
             return "Task marked as complete.";
@@ -63,6 +95,12 @@ public class AppController {
         return "Invalid task number.";
     }
 
+    /**
+     * Changes the priority of a specific task.
+     * @param taskNumber The 1-based index of the task to modify.
+     * @param newPriority The new priority to set for the task.
+     * @return A status message indicating success or failure.
+     */
     public String changeTaskPriority(int taskNumber, Priority newPriority) {
         if (taskNumber > 0 && taskNumber <= userProfile.getTasks().size()) {
             Task task = userProfile.getTasks().get(taskNumber - 1);
@@ -72,6 +110,13 @@ public class AppController {
         return "Invalid task number.";
     }
 
+    /**
+     * Edits the title and/or description of an existing task.
+     * @param taskNumber The 1-based index of the task to edit.
+     * @param newTitle The new title for the task. If blank, the title is not changed.
+     * @param newDescription The new description for the task. If blank, the description is not changed.
+     * @return A status message indicating success or failure.
+     */
     public String editTask(int taskNumber, String newTitle, String newDescription) {
         if (taskNumber > 0 && taskNumber <= userProfile.getTasks().size()) {
             Task task = userProfile.getTasks().get(taskNumber - 1);
