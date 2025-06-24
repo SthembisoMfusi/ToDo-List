@@ -14,7 +14,7 @@ public class TaskTest {
         assertNull(task.getTitle());
         assertEquals("A simple test task", task.getDescription());
         assertFalse(task.isCompleted());
-        assertEquals(Priority.NORMAL, task.getPriority());
+        assertEquals(Priority.MEDIUM, task.getPriority());
     }
 
     @Test

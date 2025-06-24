@@ -1,4 +1,4 @@
-package org.ST.mfusi.app;
+package org.ST.mfusi.todolist;
 
 import org.ST.mfusi.task.Priority;
 import org.ST.mfusi.task.Task;

@@ -15,7 +15,7 @@ public class Task {
     public Task(String description) {
         this.description = description;
         this.completed = false;
-        this.priority = Priority.NORMAL;
+        this.priority = Priority.MEDIUM;
         this.title = null; // Title is optional, can be null
     }
 
@@ -23,7 +23,7 @@ public class Task {
         this.description = description;
         this.title = title;
         this.completed = false;
-        this.priority = Priority.NORMAL;
+        this.priority = Priority.MEDIUM;
     }
 
     public Task(String title, String description, Priority priority) {
