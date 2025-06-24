@@ -1,23 +1,27 @@
 package org.ST.mfusi.app;
 
-import org.ST.mfusi.profile.Profile;
 import org.ST.mfusi.task.Priority;
 import org.ST.mfusi.task.Task;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * The main entry point for the To-Do List application.
+ * This class handles all user interface interactions (console input/output)
+ * and delegates application logic to an AppController instance.
+ */
 public class Main {
 
-    private static final Scanner scanner = new Scanner(System.in);
-    private static Profile userProfile;
-
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
 
         System.out.println("Welcome to your To-Do List Application!");
         System.out.print("Please enter your name to create a profile: ");
         String name = scanner.nextLine();
-        userProfile = new Profile(name);
+        AppController app = new AppController(name);
+
         System.out.println("\nProfile for " + name + " created. Let's get started!\n");
 
 
@@ -30,12 +34,12 @@ public class Main {
                 scanner.nextLine();
 
                 switch (choice) {
-                    case 1 -> viewToDoList();
-                    case 2 -> handleAddTask();
-                    case 3 -> handleRemoveTask();
-                    case 4 -> handleMarkTaskComplete();
-                    case 5 -> handleChangeTaskPriority();
-                    case 6 -> handleEditTask();
+                    case 1 -> System.out.println(app.getFormattedToDoList());
+                    case 2 -> handleAddTask(scanner, app);
+                    case 3 -> handleRemoveTask(scanner, app);
+                    case 4 -> handleMarkTaskComplete(scanner, app);
+                    case 5 -> handleChangeTaskPriority(scanner, app);
+                    case 6 -> handleEditTask(scanner, app);
                     case 0 -> running = false;
                     default -> System.out.println("Invalid choice. Please try again.");
                 }
@@ -63,11 +67,16 @@ public class Main {
         System.out.println("-----------------");
     }
 
-    private static void viewToDoList() {
-        System.out.println(userProfile.getFormattedToDoList());
-    }
 
-    private static void handleAddTask() {
+    /**
+     * Handles the logic for adding a new task to the user's to-do list.
+     * Prompts the user for task details such as title, description, and priority.
+     * Validates the input and delegates the task creation to the {@code AppController}.
+     *
+     * @param scanner the Scanner instance for reading user input
+     * @param app the {@code AppController} instance that manages the application logic
+     */
+    private static void handleAddTask(Scanner scanner, AppController app) {
         System.out.println("\n--- Add New Task ---");
         System.out.print("Enter task title: ");
         String title = scanner.nextLine();
@@ -85,115 +94,131 @@ public class Main {
             }
         }
 
-        userProfile.addTask(title, description, priority);
-        System.out.println("Task added successfully!");
+        // Delegate the work to the controller and print the result
+        String result = app.addTask(title, description, priority);
+        System.out.println(result);
     }
+/**
+     * Handles the logic for removing a task from the user's to-do list.
+     * Displays the current list of tasks and prompts the user for the task number to remove.
+     * Validates the input and delegates the removal to the {@code AppController}.
+     *
+     * @param scanner the Scanner instance for reading user input
+     * @param app the {@code AppController} instance that manages the application logic
+     */
+    private static void handleRemoveTask(Scanner scanner, AppController app) {
+        if (isListEmpty(app)) return;
+        System.out.println(app.getFormattedToDoList());
 
-    private static void handleRemoveTask() {
-        if (isListEmpty()) return;
-        viewToDoList();
         System.out.print("Enter the number of the task to remove: ");
         try {
             int taskNumber = scanner.nextInt();
             scanner.nextLine();
-            if (userProfile.removeTask(taskNumber)) {
-                System.out.println("Task removed successfully.");
-            } else {
-                System.out.println("Invalid task number.");
-            }
+            String result = app.removeTask(taskNumber);
+            System.out.println(result);
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a number.");
-            scanner.nextLine();
         }
     }
+/**
+     * Handles the logic for marking a task as complete in the user's to-do list.
+     * Displays the current list of tasks and prompts the user for the task number to mark as complete.
+     * Validates the input and delegates the completion marking to the {@code AppController}.
+     *
+     * @param scanner the Scanner instance for reading user input
+     * @param app the {@code AppController} instance that manages the application logic
+     */
+    private static void handleMarkTaskComplete(Scanner scanner, AppController app) {
+        if (isListEmpty(app)) return;
+        System.out.println(app.getFormattedToDoList());
 
-    private static void handleMarkTaskComplete() {
-        if (isListEmpty()) return;
-        viewToDoList();
         System.out.print("Enter the number of the task to mark as complete: ");
         try {
             int taskNumber = scanner.nextInt();
-            scanner.nextLine();
-            if (userProfile.markTaskComplete(taskNumber)) {
-                System.out.println("Task marked as complete.");
-            } else {
-                System.out.println("Invalid task number.");
-            }
+            scanner.nextLine(); // Consume newline
+            String result = app.markTaskComplete(taskNumber);
+            System.out.println(result);
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a number.");
-            scanner.nextLine();
         }
     }
+/**
+     * Handles the logic for changing the priority of a {@code task} in the user's to-do list.
+     * Displays the current list of tasks and prompts the user for the task number and new priority.
+     * Validates the input and delegates the priority change to the {@code AppController}.
+     *
+     * @param scanner the Scanner instance for reading user input
+     * @param app the {@code AppController} instance that manages the application logic
+     */
+    private static void handleChangeTaskPriority(Scanner scanner, AppController app) {
+        if (isListEmpty(app)) return;
+        System.out.println(app.getFormattedToDoList());
 
-    private static void handleChangeTaskPriority() {
-        if (isListEmpty()) return;
-        viewToDoList();
-        System.out.print("Enter the number of the task to change: ");
         try {
+            System.out.print("Enter the number of the task to change: ");
             int taskNumber = scanner.nextInt();
             scanner.nextLine();
 
-            if (taskNumber > 0 && taskNumber <= userProfile.getTasks().size()) {
-                Task task = userProfile.getTasks().get(taskNumber - 1);
-
-                Priority newPriority = null;
-                while (newPriority == null) {
-                    System.out.print("Enter new priority (HIGH, MEDIUM, LOW): ");
-                    try {
-                        newPriority = Priority.valueOf(scanner.nextLine().toUpperCase());
-                        task.setPriority(newPriority);
-                        System.out.println("Priority updated successfully.");
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("Invalid priority. Please try again.");
-                    }
-                }
-            } else {
+            // Check if task number is valid before asking for more input
+            if (taskNumber <= 0 || taskNumber > app.getUserProfile().getTasks().size()) {
                 System.out.println("Invalid task number.");
+                return;
             }
+
+            Priority newPriority = null;
+            while (newPriority == null) {
+                System.out.print("Enter new priority (HIGH, MEDIUM, LOW): ");
+                try {
+                    newPriority = Priority.valueOf(scanner.nextLine().toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid priority. Please try again.");
+                }
+            }
+
+            String result = app.changeTaskPriority(taskNumber, newPriority);
+            System.out.println(result);
+
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a number.");
-            scanner.nextLine();
         }
     }
 
-    private static void handleEditTask() {
-        if (isListEmpty()) return;
-        viewToDoList();
-        System.out.print("Enter the number of the task to edit: ");
+    private static void handleEditTask(Scanner scanner, AppController app) {
+        if (isListEmpty(app)) return;
+        System.out.println(app.getFormattedToDoList());
+
         try {
+            System.out.print("Enter the number of the task to edit: ");
             int taskNumber = scanner.nextInt();
             scanner.nextLine();
 
-            if (taskNumber > 0 && taskNumber <= userProfile.getTasks().size()) {
-                Task task = userProfile.getTasks().get(taskNumber - 1);
-
-                System.out.printf("Current title: %s\n", task.getTitle());
-                System.out.print("Enter new title (or press Enter to keep current): ");
-                String newTitle = scanner.nextLine();
-                if (!newTitle.isBlank()) {
-                    task.setTitle(newTitle);
-                }
-
-                System.out.printf("Current description: %s\n", task.getDescription());
-                System.out.print("Enter new description (or press Enter to keep current): ");
-                String newDescription = scanner.nextLine();
-                if (!newDescription.isBlank()) {
-                    task.setDescription(newDescription);
-                }
-
-                System.out.println("Task updated successfully.");
-            } else {
+            // Check if task number is valid before asking for more input
+            if (taskNumber <= 0 || taskNumber > app.getUserProfile().getTasks().size()) {
                 System.out.println("Invalid task number.");
+                return;
             }
+
+            Task task = app.getUserProfile().getTasks().get(taskNumber - 1);
+
+            System.out.printf("Current title: %s\n", task.getTitle());
+            System.out.print("Enter new title (or press Enter to keep current): ");
+            String newTitle = scanner.nextLine();
+
+            System.out.printf("Current description: %s\n", task.getDescription());
+            System.out.print("Enter new description (or press Enter to keep current): ");
+            String newDescription = scanner.nextLine();
+
+            String result = app.editTask(taskNumber, newTitle, newDescription);
+            System.out.println(result);
+
         } catch (InputMismatchException e) {
             System.out.println("Invalid input. Please enter a number.");
-            scanner.nextLine();
         }
     }
 
-    private static boolean isListEmpty() {
-        if (userProfile.getTasks().isEmpty()) {
-            System.out.println("Your to-do list is empty. Please add a task first.");
+    private static boolean isListEmpty(AppController app) {
+        if (app.getUserProfile().getTasks().isEmpty()) {
+            System.out.println("\nYour to-do list is empty. Please add a task first.");
             return true;
         }
         return false;
