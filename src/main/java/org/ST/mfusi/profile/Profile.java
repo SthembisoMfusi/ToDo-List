@@ -39,7 +39,7 @@ public class Profile {
         this.email = email;
     }
 
-    // --- To-Do List Management (Delegation Methods) ---
+
 
     /**
      * Adds a new task to this profile's to-do list.
